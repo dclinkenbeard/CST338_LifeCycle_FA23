@@ -12,41 +12,51 @@ import com.daclink.lifecycle_fa23.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG =  "LifeCycleDemo";
+    private static final String TAG = "LifeCycleDemo";
+    //TODO: add button state code here
+
+    ActivityMainBinding binding;
 
     Button button;
     TextView mTextView;
-    boolean m1 = true;
+    boolean messageOne = true;
 
-    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate(Bundle) called");
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
 
-        View view = binding.getRoot();
-        setContentView(view);
+        setContentView(binding.getRoot());
+
+        //TODO: if saved instance state code goes about here
 
         button = binding.button;
         mTextView = binding.textView;
 
+        //TODO: we will add a call to getMessage here
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (m1){
+                if (messageOne){
                     mTextView.setText(R.string.message2);
-                    m1 = false;
+                    messageOne = false;
                 } else {
                     mTextView.setText(R.string.message1);
-                    m1 = true;
+                    messageOne = true;
                 }
             }
         });
+
+        //TODO: add long click listener
+
     }
+
+    //TODO: add getMessage() about here
+
     @Override
     public void onStart() {
         super.onStart();
@@ -65,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onPause() called");
     }
 
+    //TODO: Override onSaveInstanceState here.
+
+
     @Override
     public void onStop() {
         super.onStop();
@@ -77,4 +90,3 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onDestroy() called");
     }
 }
-
