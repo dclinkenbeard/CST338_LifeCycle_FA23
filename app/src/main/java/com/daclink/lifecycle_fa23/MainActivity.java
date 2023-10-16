@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.daclink.lifecycle_fa23.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG =  "LifeCycleDemo";
@@ -16,14 +18,21 @@ public class MainActivity extends AppCompatActivity {
     TextView mTextView;
     boolean m1 = true;
 
+    ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate(Bundle) called");
 
-        button = findViewById(R.id.button);
-        mTextView = findViewById(R.id.textView);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        View view = binding.getRoot();
+        setContentView(view);
+
+        button = binding.button;
+        mTextView = binding.textView;
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
